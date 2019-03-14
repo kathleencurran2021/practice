@@ -46,7 +46,7 @@ public class Customer {
 
     }
     public static int getAge() {
-
+       
 	return age;
 	//return age
 
@@ -59,7 +59,7 @@ public class Customer {
     public static double getBalance() {
 	return balance;
 	//returns balance
-
+//poop
     }
     public static void changeName(String newName) {
 	name = newName;
