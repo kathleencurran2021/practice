@@ -1,0 +1,42 @@
+Introduction 
+Allows teachers to manipulate absences and notify students if they have too many absences 
+Allows students to view absences 
+Teachers are the primary users, as they can manipulate the absences but students have the ability to view their absences as well 
+The primary goal is to allow the teacher to take attendance and then alert the teachers and students if a student is late too many times to allow the student to meet with the teacher. 
+Overall description 
+Developed by students in Object Oriented Software Development at DePauw University and is intended to be used by anyone wanting to use an absence counter 
+Will include: graphical interface
+This is designed to work with Java and users can run it on Windows, Mac, or Linux
+Will include a user’s guide and simple help for any issues 
+External Interface Requirements
+The software will need to run on a desktop or laptop
+Only needs to interface with the java platform 
+
+
+
+Use Cases for Absence Counter
+
+Use Case #1: Student hits the maximum amount of missed classes
+The teacher clicks on the GUI representation of absences for the student
+Teacher adds one absence to the student’s absence counter
+Teacher clicks submit 
+The computer checks the number of absences the student has for the 30 submission period
+The computer sees that the student has gone over the maximum number of allowed absences 
+The computer sends a notification to the teacher alerting them that a student is over the maximum number of allowed absences
+The computer sends a notification to the teacher alerting them that a student is over the maximum number of allowed absences
+Use Case #2: Teacher accidentally adds an absence to the wrong student
+Teacher clicks on the GUI representation of Search method 
+Teacher types in the student’s ID number
+Computer iterates through all ID numbers in the database until it finds a match
+Computer returns student’s information
+Teacher reduces the number of absences for the student by 1
+Teacher saves the changes
+Computer removes one absence from the absence counter of the student
+
+Use Case #3: Secretary mistypes ID number when checking in
+Secretary types the student’s ID number 
+Computer iterates through the list of student ID numbers until a match is found
+Computer does not find a match
+Computer returns an error message stating no match was found
+
+
