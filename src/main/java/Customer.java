@@ -74,7 +74,7 @@ public class Customer {
     public String toString() {
 	return "Name : " +this.name + " \nAge : " +this.age + "\nArrival Time : " +this.arrivalTIme + "\nBalance : " + this.balance+  "\n";
 	    
-    }
+    }//test
 
 
 
