@@ -56,11 +56,8 @@ public class Student {
     }
     /* 
        The "addTOabsences" method, adds what value is passed as increase to
-       a students total absence. Since absecene is a 2:1 ratio with tardies, 
-       absences must be a mutliple of two. If a multiple of two isn't passed, 
-       the useer will be told to input again.
-       @param int increase
-     */
+       a students total absence. 
+       */
     public void addTOabsences(int increase) {
        absences = absences +  increase;
        totalMissedTime();  
