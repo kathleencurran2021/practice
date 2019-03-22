@@ -63,7 +63,7 @@ public class Student {
      */
     public void addTOabsences(int increase) {
        absences = absences +  increase;
-       
+       totalMissedTime();  
     }
     /*
       The "addTOtardies" method adds" increase" to the total
@@ -72,7 +72,7 @@ public class Student {
     public void addTOtardies(int increase){
    double add = ((double) increase) / 2.0;
         tardies = tardies + add;
-   
+        totalMissedTime();
     }
     /*
       This method calculates the total missed time a student has.
@@ -88,6 +88,7 @@ public class Student {
        System.out.println("You can not subtract a greater amount of absences from a students total absences.");
    else
    absences = absences - decrease;
+   totalMissedTime();
     }
     public void subtractTardies(int decrease) {
    double sub = (((double) decrease) / 2.0 );
@@ -95,6 +96,7 @@ public class Student {
        System.out.println("You can not subtract a greater amount of tardies from a students total tardies.");
    else
        tardies = tardies - sub;
+        totalMissedTime();
 }
     public void printStudentInfo() {
    totalMissedTime();
