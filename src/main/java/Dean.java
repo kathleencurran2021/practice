@@ -17,7 +17,7 @@ public class Dean extends FacultyMember {
    private String name;
    private int age;
    private String department;
-   private static ArrayList<Teacher> tList;
+   private ArrayList<Teacher> tList;
    
    public Dean (String name, int age, double salary) {
       // when creating a Dean, department will always be set to "Administration"
@@ -71,7 +71,7 @@ public class Dean extends FacultyMember {
          else
             min = min;
       }
-      System.out.println(max.getName()+ ". Lower your class' total missed time.");
+      System.out.println(max.getName()+ ". Lower your classes total missed time.");
       System.out.println(min.getName()+ ". You get a 10 percent raise.");
       double raise = min.getSalary() * .10;
       min.increaseSalary(raise);

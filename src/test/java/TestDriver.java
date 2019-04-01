@@ -23,7 +23,7 @@ public class TestDriver {
       ArrayList <Student> attendanceList = new ArrayList<Student>(30);
       ArrayList <Student> probationList = new ArrayList<Student>(30);
       
-      Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy");
+      Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 50000.0);
       Student Tahj = new Student("Tahj Dosso", 14, 34512);
       Student Derrick = new Student("Derrick Ousley" , 14, 57238);
       Student Nadia = new Student("Nadia Lino", 15, 26172);
@@ -40,9 +40,9 @@ public class TestDriver {
       Chidi.addTardies(Derrick, 2);
       Chidi.addTardies(Nadia, 12);
       Chidi.addTardies(Eleanor, 23);
-      Chidi.printAttendance();
-      Chidi.compareTOcap(attendanceList, 10);
-      Chidi.resetList(probationList);
+      //Chidi.printAttendance();
+      Chidi.compareTOcap(attendanceList, 4);
+     // Chidi.resetList(probationList);
       Chidi.printProbation();
       
 
