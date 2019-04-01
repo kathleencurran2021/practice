@@ -13,22 +13,29 @@
  * 
  */
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class Teacher extends FacultyMember {
     private String name;
     private int age;
     private String department;
+    private double salary;
     //inherits the fields of Faculty Member plus an added attendance List(list of students)
-    private static ArrayList <Student> attendanceList;
-    private static ArrayList <Student> probationList;
+    private ArrayList <Student> attendanceList;
+    private ArrayList <Student> probationList;
+    private static DecimalFormat twoDECI = new DecimalFormat(".##");
     
-    public Teacher(String name, int age, String department) { 
+    public Teacher(String name, int age, String department, double salary) { 
    this.name = name;
    if(age < 18)
        System.out.println("You are too young to work here.");
    else
        this.age = age;
    this.department = department;
+      if(salary > 60000.00)
+         System.out.println("I believe you have the capaibilites, but we do not have the money.");
+      else
+         this.salary = salary;
    this.attendanceList = new ArrayList<Student>(30);
    this.probationList = new ArrayList<Student>(30);
     }
@@ -40,6 +47,27 @@ public class Teacher extends FacultyMember {
     }
     public String getDepartment() {
    return department;
+    }
+    public double getSalary() {
+       return salary;
+    }
+    public void increaseSalary(double amount) {
+       salary = salary + amount;
+    }
+    public void decreaseSalary(double amount) {
+       if(amount > this.salary)
+          System.out.println("You can not decrease a salary more than the amount!");
+       else
+          salary = salary - amount;
+    }
+    public void printTeacherInfo() {
+       System.out.println("****************");
+       System.out.println("Teacher's Name: " +getName());
+       System.out.println(getName()+"'s"+ " Age: " +getAge());
+       System.out.println(getName()+"'s"+ " Department: " +getDepartment());
+       System.out.println(getName()+"'s"+" Salary: $" +twoDECI.format(getSalary()));
+       System.out.println("****************");
+       System.out.println();
     }
     public void addStudent(Student s) {
    attendanceList.add(s);
@@ -53,6 +81,9 @@ public class Teacher extends FacultyMember {
     public void removeStudent(Student s) {
    attendanceList.remove(attendanceList.indexOf(s));
     }
+    public Student getStudent(Student s) {
+       return s;
+    }
     public void printAttendance() {
    System.out.println("This is the class of "+getName());
    for(int index = 0; index < attendanceList.size(); index++) {
@@ -60,6 +91,14 @@ public class Teacher extends FacultyMember {
        current.printStudentInfo();
    }
    }
+    public double allStudentsMissedTime() {
+       double sum = 0;
+       for(int i = 0; i < attendanceList.size(); i++) {
+          Student current = attendanceList.get(i);
+          sum += current.getMissedClassTime();
+       }
+       return sum;
+    }
     public void printProbation() {
    if(this.probationList.size() == 0)
        System.out.println("The Probation List is empty, that is a good thing.");
@@ -107,11 +146,12 @@ public class Teacher extends FacultyMember {
     }
     
     public static void main(String [] args) {
-   Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy");
+   Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
    Student Tahj = new Student("Tahj Dosso", 14, 34512);
    Student Derrick = new Student("Derrick Ousley" , 14, 57238);
    Student Nadia = new Student("Nadia Lino", 15, 26172);
    Student Eleanor = new Student("Eleanor ShellStrop", 15, 34671);
+   Chidi.printTeacherInfo();
    Chidi.addStudent(Tahj);
    Chidi.addStudent(Derrick);
    Chidi.addStudent(Nadia);
@@ -124,10 +164,13 @@ public class Teacher extends FacultyMember {
    Chidi.addTardies(Derrick, 2);
    Chidi.addTardies(Nadia, 12);
    Chidi.addTardies(Eleanor, 23);
-   Chidi.printAttendance();
-   Chidi.compareTOcap(attendanceList, 10);
-   Chidi.resetList(probationList);
-   Chidi.printProbation();
+   Chidi.allStudentsMissedTime();
+   Chidi.getStudent(Eleanor);
+   //Chidi.printAttendance();
+  //Chidi.compareTOcap(attendanceList, 4);
+   //Chidi.resetList(probationList);
+ //Chidi.printProbation();
+
     }
 
    

@@ -17,7 +17,7 @@ public class Student {
 
     private String name;// name of a student
     private int grade; // this is the students grade level. For the  sake of simulation  student objcts may all have same grade level
-    private int idNumber; //no more than five digits (ex: 32756) 
+    private int idNumber; //no more than five digits (ex: 00001) 
     public int absences; //Counts as a missed class period
     public double tardies; // A tardy is being late to a class session. Two tardies equals one absence. (2:1)
     public double missedClassTime; //This is the summation of tardies and absences
