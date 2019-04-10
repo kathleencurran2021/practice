@@ -1,11 +1,15 @@
 Introduction 
-Allows teachers to manipulate absences and notify students if they have too many absences 
+Allows teachers to manipulate absences and tardies and notify students if they have too much missed class time
 Allows students to view absences 
 Teachers are the primary users, as they can manipulate the absences but students have the ability to view their absences as well 
 The primary goal is to allow the teacher to take attendance and then alert the teachers and students if a student is late too many times to allow the student to meet with the teacher. 
 Overall description 
+The class Dean, extends Faculty Member
+The Dean holds a list of teachers and views their respective students total missed class time
+The Dean can increase a teacher's salary and give teachers warnings
+	* These serve as incentives for teachers
 Developed by students in Object Oriented Software Development at DePauw University and is intended to be used by anyone wanting to use an absence counter 
-Will include: graphical interface
+Will potentially include: graphical interface
 This is designed to work with Java and users can run it on Windows, Mac, or Linux
 Will include a user’s guide and simple help for any issues 
 External Interface Requirements
@@ -16,7 +20,7 @@ Only needs to interface with the java platform
 
 Use Cases for Absence Counter
 
-Use Case #1: Student hits the maximum amount of missed classes
+Use Case #1: Student hits the maximum amount of missed class time, based off of the cap the teaher selects.
 The teacher clicks on the GUI representation of absences for the student
 Teacher adds one absence to the student’s absence counter
 Teacher clicks submit 
