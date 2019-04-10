@@ -1,13 +1,12 @@
 package attendanceProgram;
 ////////////////////////////////////////////////////////////////////////////////
-// File:             Teacher.java
+//
 // Course:           CSC232B, Spring 2019
-// Authors:          (your name and the names of other members of your group)
+// Authors:          (Sara, Carla, Tahj, Kathleen)
 //
-// Acknowledgements: (list anyone else other than your instructor who helped)
-//                   (describe in detail the the ideas and help they provided)
+// Acknowledgements: 
 //
-// Online sources:   (include Web URLs and description of any information used)
+// Online sources:   (stackoverflow.com)
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -22,10 +21,13 @@ public class Teacher extends FacultyMember {
     private String department;
     private double salary;
     //inherits the fields of Faculty Member plus an added attendance List(list of students)
-    private ArrayList <Student> attendanceList;
-    private ArrayList <Student> probationList;
+    private ArrayList <Student> attendanceList; // list that holds a teachers student
+    private ArrayList <Student> probationList;// list that holds probation student
     private static DecimalFormat twoDECI = new DecimalFormat(".##");
-    
+    /*
+     * Constructor creates new teacher
+     * With name, age, department, and salary
+     */
     public Teacher(String name, int age, String department, double salary) { 
    this.name = name;
    if(age < 18)
@@ -41,26 +43,38 @@ public class Teacher extends FacultyMember {
    this.probationList = new ArrayList<Student>(30);
     }
     public String getName() {
-   return name;
+   return name;// returns name
     }
     public int getAge() {
-   return age;
+   return age;// returns age
     }
     public String getDepartment() {
-   return department;
+   return department;// returns department
     }
     public double getSalary() {
-       return salary;
+       return salary;// returns salary 
     }
+    /*
+     * this method increases the salary by the argument -> amount
+     * @param amount
+     */
     public void increaseSalary(double amount) {
        salary = salary + amount;
     }
+    /*
+     * this method decrease the salary by the argument -> amount
+     * if the amount is less than the total salary, prints "error" message
+     * @param amount
+     */
     public void decreaseSalary(double amount) {
        if(amount > this.salary)
           System.out.println("You can not decrease a salary more than the amount!");
        else
           salary = salary - amount;
     }
+    /*
+     * print Teacher's info
+     */
     public void printTeacherInfo() {
        System.out.println("****************");
        System.out.println("Teacher's Name: " +getName());
@@ -70,21 +84,41 @@ public class Teacher extends FacultyMember {
        System.out.println("****************");
        System.out.println();
     }
+    /*
+     * adds a student to the attendance list
+     * @param student
+     */
     public void addStudent(Student s) {
    attendanceList.add(s);
     }
+    /*
+     * adds a student to the probation list
+     * @param student
+     */
     public void addStudentProbation(Student s) {
    probationList.add(s);
     }
+    /*
+     * removes student from probation list
+     * @param student
+     */
     public void removeStudentProbation(Student s) {
    probationList.remove(probationList.indexOf(s));
     }
+    /*
+     * removes student from attendance list
+     * @param student
+     */
     public void removeStudent(Student s) {
    attendanceList.remove(attendanceList.indexOf(s));
     }
+    
     public Student getStudent(Student s) {
-       return s;
+       return s; // return student
     }
+    /*
+     * prints a teachers attendance list
+     */
     public void printAttendance() {
    System.out.println("This is the class of "+getName());
    for(int index = 0; index < attendanceList.size(); index++) {
@@ -92,6 +126,9 @@ public class Teacher extends FacultyMember {
        current.printStudentInfo();
    }
    }
+    /*
+     * adds all the students missed time and returns the value
+     */
     public double allStudentsMissedTime() {
        double sum = 0;
        for(int i = 0; i < attendanceList.size(); i++) {
@@ -100,6 +137,9 @@ public class Teacher extends FacultyMember {
        }
        return sum;
     }
+    /*
+     * print probation list 
+     */
     public void printProbation() {
    if(this.probationList.size() == 0)
        System.out.println("The Probation List is empty, that is a good thing.");
@@ -113,6 +153,7 @@ public class Teacher extends FacultyMember {
    }
    }
     }
+    // resets list
     public void resetList(ArrayList<Student> list) {
    if(list.size() == 0)
        System.out.println("This list is empty.");
@@ -122,18 +163,43 @@ public class Teacher extends FacultyMember {
        System.out.println();
    }
     }
+    /*
+     * add tardies to a student
+     * @param student
+     * @param amount
+     */
     public void addTardies(Student s, int amount) {
    s.addTOtardies(amount);
     }
+    /*
+     * add absences to a student
+     * @param student
+     * @param amount
+     */
     public void addAbsences(Student s, int amount) {
    s.addTOabsences(amount);
     }
+    /*
+     * subtract tardies from a student
+     * @param student
+     * @param amount
+     */
     public void subtractTardies(Student s, int amount) {
    s.subtractTardies(amount);
     }
+    /*
+     * subtract absences from a student
+     * @param student
+     * @param amount
+     */
     public void subtractAbsences(Student s, int amount) {
    s.subtractAbsences(amount);
     }
+    /*
+     * this method takes a list and compares the students missed
+     * time to a cap value. All that surpass cap are moved to the 
+     * probation list.
+     */
     public void compareTOcap(ArrayList<Student> list, int cap){
    for(int index = 0; index < list.size(); index++) {
        Student current = list.get(index);

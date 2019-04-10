@@ -3,7 +3,7 @@ import java.util.*;
 ////////////////////////////////////////////////////////////////////////////////
 // File:             Dean.java
 // Course:           CSC232B, Spring 2019
-// Authors:          (your name and the names of other members of your group)
+// Authors:          (Carla, Kathleen, Sara, Tahj)
 //
 // Acknowledgements: (list anyone else other than your instructor who helped)
 //                   (describe in detail the the ideas and help they provided)
@@ -19,6 +19,10 @@ public class Dean extends FacultyMember {
    private int age;
    private String department;
    private ArrayList<Teacher> tList;
+   /*
+    * Creates a new dean object with a name, age, and salary
+    * department is always set to "Administration
+    */
    
    public Dean (String name, int age, double salary) {
       // when creating a Dean, department will always be set to "Administration"
@@ -29,23 +33,34 @@ public class Dean extends FacultyMember {
       tList = new ArrayList<Teacher>(10);
    }
    public String getName() {
-      return name;
+      return name; // returns the name
    }
    public int getAge() {
-      return age;
+      return age; //returns the age
    }
    public String getDepartment() {
-      return department;
+      return department; //returns the department
    }
    public double getSalary() {
-      return salary;
+      return salary; //returns the salary
    }
+   /*
+    * adds a teacher to the deans tList
+    * @param teacher
+    */
    public void addTeacher(Teacher t) {
-      tList.add(t);
+      tList.add(t); 
    }
+   /*
+    * removes a teacher from the deans list
+    * @param teacher
+    */
    public void removeTeacher(Teacher t) {
       tList.remove(tList.indexOf(t));
    }
+   /*
+    * prints deans list of teachers
+    */
    public void printTeacherList() {
       System.out.println("Currently employed Teachers");
       for(int i = 0; i < tList.size(); i++) {
@@ -54,6 +69,9 @@ public class Dean extends FacultyMember {
       }
       System.out.println();
    }
+   /*
+    * prints deans list of teachers and their respective classes
+    */
    public void printTeacherAttendanceList() {
       for(int i = 0; i <tList.size(); i++) {
          Teacher current = tList.get(i);
@@ -61,6 +79,11 @@ public class Dean extends FacultyMember {
          System.out.println();
       }
    }
+   /*
+    * compares all teachers total missed time and gives a 10% raise to
+    *  the person with the least totalMissed time and gives a warning
+    *  to the teacher with the highest missed class time
+    */
    public void compareTeacherTotalTime() {
       Teacher max = tList.get(0);
       for(int i =1; i < tList.size(); i++) {
@@ -82,6 +105,13 @@ public class Dean extends FacultyMember {
       min.increaseSalary(raise);
       
    }
+   /*
+    * this takes three fields, it moves the student from one teacher 1
+    * to teacher 2
+    * @param teacher1
+    * @param teacher2
+    * @param student
+    */
    public void moveStudent(Teacher t1, Teacher t2, Student s) {
       Student current = t1.getStudent(s);
       t1.removeStudent(s);
