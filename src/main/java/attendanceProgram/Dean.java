@@ -112,7 +112,7 @@ public class Dean extends FacultyMember {
     * @param teacher2
     * @param student
     */
-   public void moveStudent(Teacher t1, Teacher t2, Student s) {
+   public void moveStudent(Student s, Teacher t1, Teacher t2) {
       Student current = t1.getStudent(s);
       t1.removeStudent(s);
       t2.addStudent(current);
@@ -185,11 +185,11 @@ public class Dean extends FacultyMember {
       d1.addTeacher(Seuss);
    d1.addTeacher(Theresa);
       d1.addTeacher(Chidi);
-  //d1.printTeacherList();
+  d1.printTeacherList();
     //d1.printTeacherAttendanceList();
     //d1.moveStudent(Seuss, Chidi, Long);
     // d1.printTeacherAttendanceList();
-   d1.compareTeacherTotalTime();
+   //d1.compareTeacherTotalTime();
   // d1.printTeacherList();
    }
 
