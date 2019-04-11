@@ -72,10 +72,13 @@ public class Dean extends FacultyMember {
    /*
     * prints deans list of teachers and their respective classes
     */
-   public void printTeacherAttendanceList() {
+   public void printTeacherAttendanceList(Teacher t) {
       for(int i = 0; i <tList.size(); i++) {
          Teacher current = tList.get(i);
+         if(t.getName() == current.getName()) {
+         t.printAttendance();
          current.printAttendance();
+         }
          System.out.println();
       }
    }
@@ -186,7 +189,7 @@ public class Dean extends FacultyMember {
    d1.addTeacher(Theresa);
       d1.addTeacher(Chidi);
   d1.printTeacherList();
-    //d1.printTeacherAttendanceList();
+    d1.printTeacherAttendanceList(Chidi);
     //d1.moveStudent(Seuss, Chidi, Long);
     // d1.printTeacherAttendanceList();
    //d1.compareTeacherTotalTime();
