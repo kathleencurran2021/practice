@@ -62,7 +62,7 @@ public class AttendanceGUI extends Application {
       root.setCenter(Buttons);
       Scene scene = new Scene(root);
       stage.setScene(scene);
-      stage.setTitle("Attendance Program");
+      stage.setTitle("Role Call");
       stage.show();
    }
 
