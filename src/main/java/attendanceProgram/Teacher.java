@@ -14,7 +14,7 @@ package attendanceProgram;
  */
 import java.util.*;
 import java.text.DecimalFormat;
-
+//potentially add field pin
 public class Teacher extends FacultyMember {
     private String name;
     private int age;
@@ -120,10 +120,14 @@ public class Teacher extends FacultyMember {
      * prints a teachers attendance list
      */
     public void printAttendance() {
+       if(attendanceList.size() == 0)
+           System.out.println("Your class is empty");
+       else {
    System.out.println("This is the class of "+getName());
    for(int index = 0; index < attendanceList.size(); index++) {
        Student current = attendanceList.get(index);
        current.printStudentInfo();
+   }
    }
    }
     /*
@@ -144,9 +148,6 @@ public class Teacher extends FacultyMember {
    if(this.probationList.size() == 0)
        System.out.println("The Probation List is empty, that is a good thing.");
    else {
-   System.out.println("THIS IS THE PROBATION LIST.");
-   System.out.println("TRY YOUR BEST TO GET OFF THIS LIST.");
-   System.out.println("Come to class and study hard.");
    for(int index = 0; index < probationList.size(); index++) {
        Student current = probationList.get(index);
        current.printStudentInfo();
@@ -204,8 +205,7 @@ public class Teacher extends FacultyMember {
    for(int index = 0; index < list.size(); index++) {
        Student current = list.get(index);
        if(current.getMissedClassTime() >= cap) {
-      System.out.println("You have too much missed class time, " +current.getName());
-      System.out.println("You will be put on probabtion.");
+      System.out.println("Your student, " +current.getName() + " has too much missed class time. ");     
       System.out.println();
       addStudentProbation(current);
        }
@@ -233,7 +233,7 @@ public class Teacher extends FacultyMember {
    Chidi.addTardies(Eleanor, 23);
    Chidi.allStudentsMissedTime();
    Chidi.getStudent(Eleanor);
-   //Chidi.printAttendance();
+   Chidi.printAttendance();
   //Chidi.compareTOcap(attendanceList, 4);
    //Chidi.resetList(probationList);
  //Chidi.printProbation();
