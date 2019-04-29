@@ -52,6 +52,13 @@ public class Dean extends FacultyMember {
       tList.add(t); 
    }
    /*
+    * gets a teacher
+    * @param teacher
+    */
+   public Teacher getTeacher (Teacher t) {
+      return t;
+   }
+   /*
     * removes a teacher from the deans list
     * @param teacher
     */
@@ -77,7 +84,6 @@ public class Dean extends FacultyMember {
          Teacher current = tList.get(i);
          if(t.getName() == current.getName()) {
          t.printAttendance();
-         current.printAttendance();
          }
          System.out.println();
       }
@@ -115,7 +121,7 @@ public class Dean extends FacultyMember {
     * @param teacher2
     * @param student
     */
-   public void moveStudent(Student s, Teacher t1, Teacher t2) {
+   public void moveStudent(Teacher t1, Teacher t2, Student s) {
       Student current = t1.getStudent(s);
       t1.removeStudent(s);
       t2.addStudent(current);
