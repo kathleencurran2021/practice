@@ -61,7 +61,7 @@ public class Student {
     }
     /*
       The "addTOtardies" method adds" increase" to the total
-      amount of a students tardie count
+      amount of a students tardies count
      */
     public void addTOtardies(int increase){
    double add = ((double) increase) / 2.0;

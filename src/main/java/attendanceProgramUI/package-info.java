@@ -1,11 +1,5 @@
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import attendanceProgram.Student;
-
 ////////////////////////////////////////////////////////////////////////////////
-// File:             JUnitStudent.java
+// File:             package-info.java
 // Course:           CSC232B, Spring 2019
 // Authors:          (your name and the names of other members of your group)
 //
@@ -18,16 +12,4 @@ import attendanceProgram.Student;
 /**
  * 
  */
-public class StudentJTEST {
-
-   @SuppressWarnings("deprecation")
-   @Test
-   public void test() {
-      Student s = new Student("Sacls",12, 34232);
-     String check = "Sacls";
-      assertEquals(check, "Sacls");
-      assertEquals(s.getAbsences(), 0);
-     // fail("Not yet implemented"); // TODO
-   }
-
-}
+package attendanceProgramUI;

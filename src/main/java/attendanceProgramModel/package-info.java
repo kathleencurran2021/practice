@@ -1,9 +1,5 @@
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 ////////////////////////////////////////////////////////////////////////////////
-// File:             TeacherTest.java
+// File:             package-info.java
 // Course:           CSC232B, Spring 2019
 // Authors:          (your name and the names of other members of your group)
 //
@@ -16,18 +12,4 @@ import org.junit.Test;
 /**
  * 
  */
-public class TeacherTest {
-Teacher teacher1 = new Teacher("Ms.Bronson", 32, "Education", 50000.0);
-
-   /**
-    * Test method for {@link Teacher#getDepartment()}.
-    */
-   @Test
-   public void testGetDepartment() {
-     String expected = teacher1.getDepartment();
-      String result = "Education";
-      assertEquals(expected, result);
-      // TODO
-   }
-
-}
+package attendanceProgramModel;
