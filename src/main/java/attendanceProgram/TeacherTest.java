@@ -20,6 +20,7 @@ import org.junit.Test;
  */
 public class TeacherTest {
    Student s = new Student("TestName", 12, 84212);
+   Student s1 = new Student("TestName2", 12, 32312);
    Teacher t = new Teacher("TeacherTest", 34, "Science", 1000.00);
    /**
     * Test method for {@link attendanceProgram.Teacher#increaseSalary(double)}.
@@ -57,7 +58,12 @@ public class TeacherTest {
     */
    @Test
    public void testRemoveStudent() {
+      t.addStudent(s);
+      t.addStudent(s1);
       t.removeStudent(s);
+      
+      
+      if(attendanceList.size() )
       try { 
          t.getStudent(s);
          fail("Not yet implemented"); // TODO
@@ -87,7 +93,7 @@ public class TeacherTest {
    @Test
    public void testAddTardies() {
       t.addTardies(s, 2);
-      if(s.getTardies() != 1);
+      if(s.getTardies() != 1)
       fail("Not yet implemented"); // TODO
    }
 
