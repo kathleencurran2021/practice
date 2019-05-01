@@ -34,23 +34,7 @@ public class DeanTest {
       fail("Not yet implemented"); // TODO
    }
 
-   /**
-    * Test method for {@link attendanceProgram.Dean#removeTeacher(attendanceProgram.Teacher)}.
-    */
-   @Test
-   public void testRemoveTeacher() {
-      d.removeTeacher(t2);
-      try {
-         d.getTeacher(t2);
-      }
-      catch(ArrayIndexOutOfBoundsException e) {
-      
-      }
-      
-    //  if(d.getTeacher(t2) == t2)
-    //  fail("Not yet implemented"); // TODO
-   }
-
+  
    /**
     * Test method for {@link attendanceProgram.Dean#moveStudent(attendanceProgram.Teacher, attendanceProgram.Teacher, attendanceProgram.Student)}.
     */
