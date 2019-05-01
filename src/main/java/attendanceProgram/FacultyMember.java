@@ -2,7 +2,7 @@ package attendanceProgram;
 ////////////////////////////////////////////////////////////////////////////////
 // File:             FacultyMember.java
 // Course:           CSC232B, Spring 2019
-// Authors:          (Kathleen, Carla, Sara, Tahj)
+// Authors:          (Kathleen, Carla, Sarah, Tahj)
 //
 // Acknowledgements:
 //

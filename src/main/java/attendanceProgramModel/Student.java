@@ -2,7 +2,7 @@ package attendanceProgramModel;
 ////////////////////////////////////////////////////////////////////////////////
 // File:             Student.java
 // Course:           CSC232B, Spring 2019
-// Authors:          (your name and the names of other members of your group)
+// Authors:          Tahj, Kathleen, Carla, Sarah
 //
 // Acknowledgements: (list anyone else other than your instructor who helped)
 //                   (describe in detail the the ideas and help they provided)

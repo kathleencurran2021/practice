@@ -3,7 +3,7 @@ import java.util.*;
 ////////////////////////////////////////////////////////////////////////////////
 // File:             Dean.java
 // Course:           CSC232B, Spring 2019
-// Authors:          (Carla, Kathleen, Sara, Tahj)
+// Authors:          (Carla, Kathleen, Sarah, Tahj)
 //
 // Acknowledgements: (list anyone else other than your instructor who helped)
 //                   (describe in detail the the ideas and help they provided)
@@ -128,7 +128,7 @@ public class Dean extends FacultyMember {
    }
    
    //deans list
-   //Additonal attention List
+   //Additional attention List
 
    /**
     * @param args
