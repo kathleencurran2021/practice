@@ -53,26 +53,7 @@ public class TeacherTest {
       if(t.getStudent(s) != s)
       fail("Not yet implemented"); // TODO
    }
-   /**
-    * Test method for {@link attendanceProgram.Teacher#removeStudent(attendanceProgram.Student)}.
-    */
-   @Test
-   public void testRemoveStudent() {
-      t.addStudent(s);
-      t.addStudent(s1);
-      t.removeStudent(s);
-      
-      
-      if(attendanceList.size() )
-      try { 
-         t.getStudent(s);
-         fail("Not yet implemented"); // TODO
-      }
-      catch (ArrayIndexOutOfBoundsException arr) {
-      }// if(t.getStudent(s) != null)
-      
-   }
-
+ 
    /**
     * Test method for {@link attendanceProgram.Teacher#allStudentsMissedTime()}.
     */
