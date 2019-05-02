@@ -1,5 +1,7 @@
 package attendanceProgramUI;
 import attendanceProgram.Teacher;
+import attendanceProgram.Student;
+import attendanceProgram.Dean;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -15,14 +17,44 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
+
 @SuppressWarnings("unused")
 public class tester extends Application{
+   Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
+   Student Tahj = new Student("Tahj Dosso", 14, 34512);
+   Dean d1 = new Dean("Marie Eleo", 44, 90234.90);
+   Student Derrick = new Student("Derrick Ousley" , 14, 57238);
+   Student Nadia = new Student("Nadia Lino", 15, 26172);
+   Student Eleanor = new Student("Eleanor ShellStrop", 15, 34671);
+   
+   public tester(){
+   
+   Chidi.addStudent(Tahj);
+   Chidi.addStudent(Derrick);
+   Chidi.addStudent(Nadia);
+   Chidi.addStudent(Eleanor);
+   Chidi.addAbsences(Tahj, 6);
+   Chidi.addAbsences(Derrick, 9);
+   Chidi.addAbsences(Nadia, 4);
+   Chidi.addAbsences(Eleanor, 12);
+   Chidi.addTardies(Tahj, 3);
+   Chidi.addTardies(Derrick, 2);
+   Chidi.addTardies(Nadia, 12);
+   Chidi.addTardies(Eleanor, 23);
+  
+   }
+   
    public static void main(String[] args) {
+     
+      
       launch(args);
+      
+      
    } 
      
    //declaring the scenes
-   Scene scene, teacherScene, loginScene, deanScene, absenceScene, probationScene;
+   Scene scene, teacherScene, loginScene, deanScene, absenceScene, probationScene, deanStudent, deanTeacher;
    
    @Override
    public void start(Stage primaryStage) {
@@ -32,9 +64,8 @@ public class tester extends Application{
       GridPane grid2 = new GridPane();
       GridPane grid3 = new GridPane();
       GridPane grid4 = new GridPane();
-
       
-      //homepage scene
+      //home page scene
       Label label = new Label("Homepage");
          grid.add(label, 0, 0);
       Button btn1 = new Button("Teacher");
@@ -54,16 +85,24 @@ public class tester extends Application{
          logGrid.add(nameLabel, 0, 0);
       TextField nameText = new TextField();
          logGrid.add(nameText, 0, 2);
-         
-     Label pinLabel = new Label("What is your pin?");
-        logGrid.add(pinLabel, 0, 6);
-     TextField pinText = new TextField();
-        logGrid.add(pinText, 0, 8);
-         
+                  
+        
+      //reads the name and pin fields 
+      //will match the name and pin to a teacher that is available 
+        //^^not done yet
+      //moves user to Teacher page 
       Button goButton = new Button("Go");
          logGrid.add(goButton, 8, 8);
-         goButton.setOnAction(e -> primaryStage.setScene(teacherScene));
-      
+         goButton.setOnAction((action) -> {
+            String storedName = nameText.getText();
+            //where the teacher object should be created 
+            //Teacher 
+            
+            //System.out.println(storedName + " " + storedPin);
+            primaryStage.setScene(teacherScene);            
+         });
+         
+         
 ////////////////////////////////////////////////////////////////////////////
       
       //teacher scene
@@ -79,7 +118,7 @@ public class tester extends Application{
       //prints the attendance of the teacher's class
       Button printAttendance = new Button("Print Attendance");
          grid2.add(printAttendance, 2, 8);
-         //printAttendance.setOnAction(e -> Teacher.class.printAttendance());
+        printAttendance.setOnAction(e -> Chidi.printAttendance());
       
       //takes user to the probation page
       Button studentProbation = new Button("Student Probation");
@@ -94,7 +133,9 @@ public class tester extends Application{
       //Prints the teacher's information 
       Button teacherInfo = new Button("Show Teacher Info");
          grid2.add(teacherInfo, 2, 14);
-         //teacherInfo.setOnAction(e -> Teacher.class.printTeacherInfo());
+         //need to use a specific teacher 
+         //subclass of scene that has a teacher field 
+         teacherInfo.setOnAction(e -> Chidi.printTeacherInfo());
          
       //exits the GUI
       Button logOff = new Button("Log Off");
@@ -124,8 +165,17 @@ public class tester extends Application{
          
 /////////////////////////////////////////////////////////////////////////////////////////////
          
-         
-         
+         //Student probation scene
+         GridPane grid5 = new GridPane();
+         probationScene = new Scene(grid5, 300, 200);
+         Label label5 = new Label("Student Probation Page");
+         Button printProbation = new Button("Print Probation");
+            grid5.add(printProbation, 0, 4);
+         Button resetProbation = new Button("Reset Probation List");
+            grid5.add(resetProbation, 2, 4);
+         Button backButton = new Button("Back");
+            grid5.add(backButton, 0, 6);
+            backButton.setOnAction(e -> primaryStage.setScene(teacherScene));
       
 /////////////////////////////////////////////////////////////////////////////////////////////
       
@@ -133,27 +183,40 @@ public class tester extends Application{
       deanScene = new Scene(grid3, 300, 200);
       Label label4 = new Label("Dean Page");
          grid3.add(label4, 0, 0);
-      Label aLabel = new Label("This page doesnt do anything yet");
-         grid3.add(aLabel, 3, 3);
+      Button studentButton = new Button("Students");
+         grid3.add(studentButton, 0, 4);
+         studentButton.setOnAction(e -> primaryStage.setScene(deanStudent));
+      Button teacherButton = new Button("Teachers");
+         grid3.add(teacherButton, 2, 4);
+         teacherButton.setOnAction(e -> primaryStage.setScene(deanStudent));
+         
+      
+         
+//////////////////////////////////////////////////////////////////////////////////////////////         
+         
+      GridPane grid6 = new GridPane();   
+      deanStudent = new Scene(grid6, 300, 200);
+      Label studLabel = new Label("This is where the Dean manipulates student info");
+         grid6.add(studLabel, 0, 0);
+      Button studentInfo = new Button("Student Info");
+         grid6.add(studentInfo, 0, 4);
+      Button moveStudent = new Button("Move Student");
+         grid6.add(moveStudent, 2, 4);
+      
+     
+      
       
 ///////////////////////////////////////////////////////////////////////////////////////////  
      
-      GridPane grid5 = new GridPane();
-      probationScene = new Scene(grid5, 300, 200);
-      Label label5 = new Label("Student Probation Page");
-      Button printProbation = new Button("Print Probation");
-         grid5.add(printProbation, 0, 4);
-      Button resetProbation = new Button("Reset Probation List");
-         grid5.add(resetProbation, 2, 4);
-         
-      
-         
-         
+            
       //makes the window visible 
       //should be the last thing before you implement your code 
       primaryStage.setScene(scene);
       primaryStage.show();
-            
+        
+      
+      
    }
+   
 
 }
