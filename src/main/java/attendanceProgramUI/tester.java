@@ -228,10 +228,9 @@ public class tester extends Application{
 //            String comparedStudent = addStudentName.getText();
 //            Student theStudent = h.get(comparedStudent);
 //            
-//            List<Student>
-//            Chidi.compareToCap(Teacher.class.attendanceList, 6);
+//            compareToCap(Teacher.class.attendanceList, 6);
 //         }); 
-//         
+         
          
       Button back = new Button("Back");
          grid4.add(back, 0, 8);
