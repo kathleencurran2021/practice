@@ -15,7 +15,7 @@ import java.util.*;
  * 
  */
 public class Dean extends FacultyMember {
-   private String name;
+   private String name; 
    private int age;
    private String department;
    private ArrayList<Teacher> tList;

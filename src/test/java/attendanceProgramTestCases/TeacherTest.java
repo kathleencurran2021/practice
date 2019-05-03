@@ -9,11 +9,14 @@
 // Online sources:   (include Web URLs and description of any information used)
 ////////////////////////////////////////////////////////////////////////////////
 
-package attendanceProgram;
+package attendanceProgramTestCases;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import attendanceProgram.Student;
+import attendanceProgram.Teacher;
 
 /**
  * 
@@ -28,7 +31,7 @@ public class TeacherTest {
    @Test
    public void testIncreaseSalary() {
       t.increaseSalary(1000.00);
-      if(t.getSalary() != 2000.00)
+      if (t.getSalary() != 2000.00)
       fail("This fails"); // TODO
       t.decreaseSalary(1000.00);
    }

@@ -9,11 +9,15 @@
 // Online sources:   (include Web URLs and description of any information used)
 ////////////////////////////////////////////////////////////////////////////////
 
-package attendanceProgram;
+package attendanceProgramTestCases;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import attendanceProgram.Dean;
+import attendanceProgram.Student;
+import attendanceProgram.Teacher;
 
 /**
  * 
@@ -30,8 +34,10 @@ public class DeanTest {
    @Test
    public void testAddTeacher() {
       d.addTeacher(t2);
-      if(d.getTeacher(t2) != t2)
-      fail("Not yet implemented"); // TODO
+      Teacher teach = d.getTeacher(t2);
+      assertEquals(teach, t2);
+     // if(d.getTeacher(t2) != t2)
+     // fail("Not yet implemented"); // TODO
    }
 
   

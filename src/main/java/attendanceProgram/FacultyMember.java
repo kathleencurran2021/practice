@@ -19,7 +19,7 @@ public abstract class FacultyMember {
        private String name;// name for faculty
        private int age; // age for faculty
        private String department; // department for faculty
-       public double salary;
+       public double salary; // pay for faculty
 
        public abstract String getName(); // gets name
        public abstract int getAge(); //gets name

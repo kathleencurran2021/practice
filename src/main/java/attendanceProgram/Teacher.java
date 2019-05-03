@@ -211,14 +211,14 @@ public class Teacher extends FacultyMember {
        }
    }
     }
-    
+   /* 
     public static void main(String [] args) {
    Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
    Student Tahj = new Student("Tahj Dosso", 14, 34512);
    Student Derrick = new Student("Derrick Ousley" , 14, 57238);
    Student Nadia = new Student("Nadia Lino", 15, 26172);
    Student Eleanor = new Student("Eleanor ShellStrop", 15, 34671);
-   Chidi.printTeacherInfo();
+  // Chidi.printTeacherInfo();
    Chidi.addStudent(Tahj);
    Chidi.addStudent(Derrick);
    Chidi.addStudent(Nadia);
@@ -231,8 +231,8 @@ public class Teacher extends FacultyMember {
    Chidi.addTardies(Derrick, 2);
    Chidi.addTardies(Nadia, 12);
    Chidi.addTardies(Eleanor, 23);
-   Chidi.allStudentsMissedTime();
-   Chidi.getStudent(Eleanor);
+   //Chidi.allStudentsMissedTime();
+ //  Chidi.getStudent(Eleanor);
    Chidi.printAttendance();
   //Chidi.compareTOcap(attendanceList, 4);
    //Chidi.resetList(probationList);
@@ -240,6 +240,6 @@ public class Teacher extends FacultyMember {
 
     }
 
-   
+   */
             
 }
