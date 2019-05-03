@@ -211,7 +211,7 @@ public class Teacher extends FacultyMember {
        }
    }
     }
-    
+   /* 
     public static void main(String [] args) {
    Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
    Student Tahj = new Student("Tahj Dosso", 14, 34512);
@@ -240,6 +240,6 @@ public class Teacher extends FacultyMember {
 
     }
 
-   
+   */
             
 }

@@ -31,7 +31,7 @@ public class TeacherTest {
    @Test
    public void testIncreaseSalary() {
       t.increaseSalary(1000.00);
-      if(t.getSalary() != 2000.00)
+      if (t.getSalary() != 2000.00)
       fail("This fails"); // TODO
       t.decreaseSalary(1000.00);
    }

@@ -34,8 +34,10 @@ public class DeanTest {
    @Test
    public void testAddTeacher() {
       d.addTeacher(t2);
-      if(d.getTeacher(t2) != t2)
-      fail("Not yet implemented"); // TODO
+      Teacher teach = d.getTeacher(t2);
+      assertEquals(teach, t2);
+     // if(d.getTeacher(t2) != t2)
+     // fail("Not yet implemented"); // TODO
    }
 
   

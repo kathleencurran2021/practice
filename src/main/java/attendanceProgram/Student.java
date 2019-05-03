@@ -121,7 +121,7 @@ public class Student {
    System.out.println("******************");
    System.out.println();
     }
-   
+   /*
    public static void main(String [] args) {
        Student loki = new Student("Loki" , 12 , 62321);
        Student Derrick = new Student("Derrick", 14, 67823);
@@ -137,7 +137,7 @@ public class Student {
        Hayden.addTOabsences(9);
        Hayden.printStudentInfo();
    }
-   
+   */
 }
 
 
