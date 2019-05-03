@@ -1,4 +1,5 @@
 package attendanceProgramUI;
+import attendanceProgram.Dean;
 import attendanceProgram.Teacher;
 import attendanceProgram.Student;
 
@@ -51,23 +52,16 @@ public class tester extends Application{
    Chidi.addAbsences(Derrick, 9);
    Chidi.addAbsences(Nadia, 4);
    Chidi.addAbsences(Eleanor, 12);
-//   Chidi.addTardies(Tahj, 3);
-//   Chidi.addTardies(Derrick, 2);
-//   Chidi.addTardies(Nadia, 12);
-//   Chidi.addTardies(Eleanor, 23);
+   Chidi.addTardies(Tahj, 3);
+   Chidi.addTardies(Derrick, 2);
+   Chidi.addTardies(Nadia, 12);
+   Chidi.addTardies(Eleanor, 23);
    
    
    
    }
    
    public static void main(String[] args) {
-//      List<Student> chidiClass = new ArrayList<Student>();
-//      chidiClass.add(Tahj);
-//      chidiClass.add(Derrick);
-//      chidiClass.add(Nadia);
-//      chidiClass.add(Eleanor);
-      
-     
 
       launch(args);
       
@@ -189,33 +183,56 @@ public class tester extends Application{
       Label label3 = new Label("Absence Page");
          grid4.add(label3, 0, 0);
       Label studLabel = new Label("Enter the name of the student");
-      TextField addTardyText = new TextField();
-         grid4.add(addTardyText, 0, 3);
-         
-
+      TextField addStudentName = new TextField();
+         grid4.add(addStudentName, 0, 3);
       Button addTardy = new Button("Add a Tardy");
          grid4.add(addTardy, 0, 2);
-            
             addTardy.setOnAction((action) -> {
-               String tardyStudent = addTardyText.getText();
-               //how do I write this such that I can access a student 
-               
+               String tardyStudent = addStudentName.getText();
                Student theStudent = h.get(tardyStudent);
-               
-               Chidi.addTardies(theStudent, 1);
-               
+               Chidi.addTardies(theStudent, 1); 
+               System.out.println("Tardy added to " + tardyStudent);
             });
          
-         
-         
+
       Button subTardy = new Button("Remove a Tardy");
          grid4.add(subTardy, 2, 2);
-      Button addAbscence = new Button("Add an Absence");
-         grid4.add(addAbscence, 0, 4);
+         subTardy.setOnAction((action) -> {
+               String notTardyStudent = addStudentName.getText();
+               Student theStudent = h.get(notTardyStudent);
+               Chidi.subtractTardies(theStudent, 1);
+               System.out.println("Tardy subtracted from " + notTardyStudent);
+         });         
+         
+      Button addAbsence = new Button("Add an Absence");
+         grid4.add(addAbsence, 0, 4);
+         addAbsence.setOnAction((action) -> {
+            String absentStudent = addStudentName.getText();
+            Student theStudent = h.get(absentStudent);
+            Chidi.addAbsences(theStudent, 2); 
+            System.out.println("Absence added to " + absentStudent);
+         });
+         
       Button subAbsence = new Button("Remove an Absence");
          grid4.add(subAbsence, 2, 4);
-      Button compareToCap = new Button("Compare to Max");
-         grid4.add(compareToCap, 0, 6);
+         subAbsence.setOnAction((action) -> {
+            String notAbsentStudent = addStudentName.getText();
+            Student theStudent = h.get(notAbsentStudent);
+            Chidi.subtractAbsences(theStudent, 2); 
+            System.out.println("Tardy removed from " + notAbsentStudent);
+         });      
+                  
+//      Button compareToCap = new Button("Compare to Max");
+//         grid4.add(compareToCap, 0, 6);
+//         compareToCap.setOnAction((action) -> {
+//            String comparedStudent = addStudentName.getText();
+//            Student theStudent = h.get(comparedStudent);
+//            
+//            List<Student>
+//            Chidi.compareToCap(Teacher.class.attendanceList, 6);
+//         }); 
+//         
+         
       Button back = new Button("Back");
          grid4.add(back, 0, 8);
          back.setOnAction(e -> primaryStage.setScene(teacherScene));
