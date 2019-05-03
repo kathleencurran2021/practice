@@ -105,6 +105,9 @@ public class Student {
     /*
      * prints student info(all of their fields)
      */
+    public Student getStudent(Student s) {
+       return s; // return student
+    }
     
     public void printStudentInfo() {
    totalMissedTime();

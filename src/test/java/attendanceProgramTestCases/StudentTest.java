@@ -9,11 +9,13 @@
 // Online sources:   (include Web URLs and description of any information used)
 ////////////////////////////////////////////////////////////////////////////////
 
-package attendanceProgram;
+package attendanceProgramTestCases;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import attendanceProgram.Student;
 
 /**/
  
