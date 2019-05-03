@@ -1,13 +1,12 @@
 package attendanceProgram;
 ////////////////////////////////////////////////////////////////////////////////
-// File:             Teacher.java
+//
 // Course:           CSC232B, Spring 2019
-// Authors:          (your name and the names of other members of your group)
+// Authors:          (Sara, Carla, Tahj, Kathleen)
 //
-// Acknowledgements: (list anyone else other than your instructor who helped)
-//                   (describe in detail the the ideas and help they provided)
+// Acknowledgements: 
 //
-// Online sources:   (include Web URLs and description of any information used)
+// Online sources:   (stackoverflow.com)
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -15,7 +14,7 @@ package attendanceProgram;
  */
 import java.util.*;
 import java.text.DecimalFormat;
-
+//potentially add field pin
 public class Teacher extends FacultyMember {
     private String name;
     private int age;
@@ -25,7 +24,10 @@ public class Teacher extends FacultyMember {
     public ArrayList <Student> attendanceList;
     public ArrayList <Student> probationList;
     private static DecimalFormat twoDECI = new DecimalFormat(".##");
-    
+    /*
+     * Constructor creates new teacher
+     * With name, age, department, and salary
+     */
     //should have something extra to show which teacher it is the page 
     
     
@@ -44,26 +46,38 @@ public class Teacher extends FacultyMember {
        this.probationList = new ArrayList<Student>(30);
     }
     public String getName() {
-   return name;
+   return name;// returns name
     }
     public int getAge() {
-   return age;
+   return age;// returns age
     }
     public String getDepartment() {
-   return department;
+   return department;// returns department
     }
     public double getSalary() {
-       return salary;
+       return salary;// returns salary 
     }
+    /*
+     * this method increases the salary by the argument -> amount
+     * @param amount
+     */
     public void increaseSalary(double amount) {
        salary = salary + amount;
     }
+    /*
+     * this method decrease the salary by the argument -> amount
+     * if the amount is less than the total salary, prints "error" message
+     * @param amount
+     */
     public void decreaseSalary(double amount) {
        if(amount > this.salary)
           System.out.println("You can not decrease a salary more than the amount!");
        else
           salary = salary - amount;
     }
+    /*
+     * print Teacher's info
+     */
     public void printTeacherInfo() {
        System.out.println("****************");
        System.out.println("Teacher's Name: " +getName());
@@ -73,28 +87,55 @@ public class Teacher extends FacultyMember {
        System.out.println("****************");
        System.out.println();
     }
+    /*
+     * adds a student to the attendance list
+     * @param student
+     */
     public void addStudent(Student s) {
    attendanceList.add(s);
     }
+    /*
+     * adds a student to the probation list
+     * @param student
+     */
     public void addStudentProbation(Student s) {
    probationList.add(s);
     }
+    /*
+     * removes student from probation list
+     * @param student
+     */
     public void removeStudentProbation(Student s) {
    probationList.remove(probationList.indexOf(s));
     }
+    /*
+     * removes student from attendance list
+     * @param student
+     */
     public void removeStudent(Student s) {
    attendanceList.remove(attendanceList.indexOf(s));
     }
+    
     public Student getStudent(Student s) {
-       return s;
+       return s; // return student
     }
+    /*
+     * prints a teachers attendance list
+     */
     public void printAttendance() {
+       if(attendanceList.size() == 0)
+           System.out.println("Your class is empty");
+       else {
    System.out.println("This is the class of "+getName());
    for(int index = 0; index < attendanceList.size(); index++) {
        Student current = attendanceList.get(index);
        current.printStudentInfo();
    }
    }
+   }
+    /*
+     * adds all the students missed time and returns the value
+     */
     public double allStudentsMissedTime() {
        double sum = 0;
        for(int i = 0; i < attendanceList.size(); i++) {
@@ -103,19 +144,20 @@ public class Teacher extends FacultyMember {
        }
        return sum;
     }
+    /*
+     * print probation list 
+     */
     public void printProbation() {
    if(this.probationList.size() == 0)
        System.out.println("The Probation List is empty, that is a good thing.");
    else {
-   System.out.println("THIS IS THE PROBATION LIST.");
-   System.out.println("TRY YOUR BEST TO GET OFF THIS LIST.");
-   System.out.println("Come to class and study hard.");
    for(int index = 0; index < probationList.size(); index++) {
        Student current = probationList.get(index);
        current.printStudentInfo();
    }
    }
     }
+    // resets list
     public void resetList(ArrayList<Student> list) {
    if(list.size() == 0)
        System.out.println("This list is empty.");
@@ -125,37 +167,61 @@ public class Teacher extends FacultyMember {
        System.out.println();
    }
     }
+    /*
+     * add tardies to a student
+     * @param student
+     * @param amount
+     */
     public void addTardies(Student s, int amount) {
    s.addTOtardies(amount);
     }
+    /*
+     * add absences to a student
+     * @param student
+     * @param amount
+     */
     public void addAbsences(Student s, int amount) {
    s.addTOabsences(amount);
     }
+    /*
+     * subtract tardies from a student
+     * @param student
+     * @param amount
+     */
     public void subtractTardies(Student s, int amount) {
    s.subtractTardies(amount);
     }
+    /*
+     * subtract absences from a student
+     * @param student
+     * @param amount
+     */
     public void subtractAbsences(Student s, int amount) {
    s.subtractAbsences(amount);
     }
+    /*
+     * this method takes a list and compares the students missed
+     * time to a cap value. All that surpass cap are moved to the 
+     * probation list.
+     */
     public void compareTOcap(ArrayList<Student> list, int cap){
    for(int index = 0; index < list.size(); index++) {
        Student current = list.get(index);
        if(current.getMissedClassTime() >= cap) {
-      System.out.println("You have too much missed class time, " +current.getName());
-      System.out.println("You will be put on probabtion.");
+      System.out.println("Your student, " +current.getName() + " has too much missed class time. ");     
       System.out.println();
       addStudentProbation(current);
        }
    }
     }
-    
+   /* 
     public static void main(String [] args) {
    Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
    Student Tahj = new Student("Tahj Dosso", 14, 34512);
    Student Derrick = new Student("Derrick Ousley" , 14, 57238);
    Student Nadia = new Student("Nadia Lino", 15, 26172);
    Student Eleanor = new Student("Eleanor ShellStrop", 15, 34671);
-   Chidi.printTeacherInfo();
+  // Chidi.printTeacherInfo();
    Chidi.addStudent(Tahj);
    Chidi.addStudent(Derrick);
    Chidi.addStudent(Nadia);
@@ -168,15 +234,15 @@ public class Teacher extends FacultyMember {
    Chidi.addTardies(Derrick, 2);
    Chidi.addTardies(Nadia, 12);
    Chidi.addTardies(Eleanor, 23);
-   Chidi.allStudentsMissedTime();
-   Chidi.getStudent(Eleanor);
-   //Chidi.printAttendance();
+   //Chidi.allStudentsMissedTime();
+ //  Chidi.getStudent(Eleanor);
+   Chidi.printAttendance();
   //Chidi.compareTOcap(attendanceList, 4);
    //Chidi.resetList(probationList);
  //Chidi.printProbation();
 
     }
 
-   
+   */
             
 }

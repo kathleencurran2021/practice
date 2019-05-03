@@ -1,0 +1,69 @@
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+////////////////////////////////////////////////////////////////////////////////
+// File:             AttendanceGUI.java
+// Course:           CSC232B, Spring 2019
+// Authors:          Kathleen, Tahj, Carla, Sarah
+//
+// Acknowledgements: (list anyone else other than your instructor who helped)
+//                   (describe in detail the the ideas and help they provided)
+//
+// Online sources:   (include Web URLs and description of any information used)
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 
+ */
+public class AttendanceGUI extends Application {
+
+   /**
+    * @param args
+    */
+   public static void main(String[] args) {
+      // TODO Auto-generated method stub
+      launch(args);
+
+   }
+
+   /* (non-Javadoc)
+    * @see javafx.application.Application#start(javafx.stage.Stage)
+    */
+   @Override
+   public void start(Stage stage) throws Exception {
+      // TODO Auto-generated method stub
+      
+      
+      
+      Button teacher = new Button("For Teachers"); //creates new button labeled "For Teachers"
+     teacher.setOnAction(e -> {
+           System.out.println("This is for Teachers");    
+     });
+      
+      Button dean = new Button("For Deans"); //creates a new button labeled "For Deans"
+      dean.setOnAction(e -> {
+         System.out.println("This is for Deans");
+      });
+      HBox Buttons = new HBox(teacher, dean); //sets the two buttons in a horizontal row
+      Buttons.setSpacing(15); //sets the spacing between the two buttons in the row
+      
+      
+     
+      BorderPane root = new BorderPane(); //creates a new border pane
+      
+      root.setCenter(Buttons); //centers the button in the pane
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+      stage.setTitle("Role Call");
+      stage.show();
+   }
+
+}

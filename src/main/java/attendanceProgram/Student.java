@@ -2,22 +2,18 @@ package attendanceProgram;
 ////////////////////////////////////////////////////////////////////////////////
 // File:             Student.java
 // Course:           CSC232B, Spring 2019
-// Authors:          (your name and the names of other members of your group)
+// Authors:          (Tahj, Carla, Sara, Kathlenn)
 //
-// Acknowledgements: (list anyone else other than your instructor who helped)
-//                   (describe in detail the the ideas and help they provided)
+// Acknowledgements: 
+//      
 //
-// Online sources:   (include Web URLs and description of any information used)
+// Online sources:   (stackoverflow.com)
 ////////////////////////////////////////////////////////////////////////////////
-
-/**
- * g
- */
 
 public class Student {
 
     private String name;// name of a student
-    private int grade; // this is the students grade level. For the  sake of simulation  student objcts may all have same grade level
+    private int grade; // this is the students grade level. For the  sake of simulation  student objects may all have same grade level
     private int idNumber; //no more than five digits (ex: 00001) 
     public int absences; //Counts as a missed class period
     public double tardies; // A tardy is being late to a class session. Two tardies equals one absence. (2:1)
@@ -65,7 +61,7 @@ public class Student {
     }
     /*
       The "addTOtardies" method adds" increase" to the total
-      amount of a students tardie count
+      amount of a students tardies count
      */
     public void addTOtardies(int increase){
    double add = ((double) increase) / 2.0;
@@ -81,6 +77,11 @@ public class Student {
    this.missedClassTime = this.getAbsences() + this.getTardies();
    
     }
+    /*
+     * This method subtracts variable "decrease" from the students absence
+     * totalMissedTime()
+     * @param decrease
+     */
     public void subtractAbsences(int decrease) {
    if(decrease > this.getAbsences())
        System.out.println("You can not subtract a greater amount of absences from a students total absences.");
@@ -88,6 +89,11 @@ public class Student {
    absences = absences - decrease;
    totalMissedTime();
     }
+    /*
+     * This method subtracts variable "decrease" from the students tardies
+     * totalMissedTime() works as an invariance
+     * @param decrease
+     */
     public void subtractTardies(int decrease) {
    double sub = (((double) decrease) / 2.0 );
         if(sub > this.getTardies()) 
@@ -96,6 +102,13 @@ public class Student {
        tardies = tardies - sub;
         totalMissedTime();
 }
+    /*
+     * prints student info(all of their fields)
+     */
+    public Student getStudent(Student s) {
+       return s; // return student
+    }
+    
     public void printStudentInfo() {
    totalMissedTime();
    System.out.println("******************");
@@ -108,7 +121,7 @@ public class Student {
    System.out.println("******************");
    System.out.println();
     }
-   
+   /*
    public static void main(String [] args) {
        Student loki = new Student("Loki" , 12 , 62321);
        Student Derrick = new Student("Derrick", 14, 67823);
@@ -124,7 +137,7 @@ public class Student {
        Hayden.addTOabsences(9);
        Hayden.printStudentInfo();
    }
-   
+   */
 }
 
 
