@@ -22,23 +22,26 @@ public class Teacher extends FacultyMember {
     private String department;
     private double salary;
     //inherits the fields of Faculty Member plus an added attendance List(list of students)
-    private ArrayList <Student> attendanceList;
-    private ArrayList <Student> probationList;
+    public ArrayList <Student> attendanceList;
+    public ArrayList <Student> probationList;
     private static DecimalFormat twoDECI = new DecimalFormat(".##");
     
+    //should have something extra to show which teacher it is the page 
+    
+    
     public Teacher(String name, int age, String department, double salary) { 
-   this.name = name;
-   if(age < 18)
-       System.out.println("You are too young to work here.");
-   else
-       this.age = age;
-   this.department = department;
-      if(salary > 60000.00)
-         System.out.println("I believe you have the capaibilites, but we do not have the money.");
-      else
-         this.salary = salary;
-   this.attendanceList = new ArrayList<Student>(30);
-   this.probationList = new ArrayList<Student>(30);
+       this.name = name;
+       if(age < 18)
+          System.out.println("You are too young to work here.");
+       else
+          this.age = age;
+          this.department = department;
+       if(salary > 60000.00)
+             System.out.println("I believe you have the capaibilites, but we do not have the money.");
+       else
+             this.salary = salary;
+       this.attendanceList = new ArrayList<Student>(30);
+       this.probationList = new ArrayList<Student>(30);
     }
     public String getName() {
    return name;

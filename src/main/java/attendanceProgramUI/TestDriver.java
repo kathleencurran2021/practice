@@ -44,7 +44,7 @@ public class TestDriver {
       Chidi.addTardies(Derrick, 2);
       Chidi.addTardies(Nadia, 12);
       Chidi.addTardies(Eleanor, 23);
-      //Chidi.printAttendance();
+      Chidi.printAttendance();
       Chidi.compareTOcap(attendanceList, 4);
      // Chidi.resetList(probationList);
       Chidi.printProbation();

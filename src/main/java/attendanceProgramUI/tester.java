@@ -221,7 +221,7 @@ public class tester extends Application{
             Chidi.subtractAbsences(theStudent, 2); 
             System.out.println("Absence removed from " + notAbsentStudent);
          });      
-                  
+                    
 //      Button compareToCap = new Button("Compare to Max");
 //         grid4.add(compareToCap, 0, 6);
 //         compareToCap.setOnAction((action) -> {
