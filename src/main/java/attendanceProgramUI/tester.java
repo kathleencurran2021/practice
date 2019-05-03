@@ -1,11 +1,16 @@
 package attendanceProgramUI;
 import attendanceProgram.Teacher;
 import attendanceProgram.Student;
+
+import java.util.*;
+
 import attendanceProgram.Dean;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 
@@ -22,11 +28,18 @@ import javafx.stage.Stage;
 @SuppressWarnings("unused")
 public class tester extends Application{
    Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
-   Student Tahj = new Student("Tahj Dosso", 14, 34512);
    Dean d1 = new Dean("Marie Eleo", 44, 90234.90);
-   Student Derrick = new Student("Derrick Ousley" , 14, 57238);
-   Student Nadia = new Student("Nadia Lino", 15, 26172);
-   Student Eleanor = new Student("Eleanor ShellStrop", 15, 34671);
+   static Student Tahj = new Student("Tahj Dosso", 14, 34512);
+   static Student Derrick = new Student("Derrick Ousley" , 14, 57238);
+   static Student Nadia = new Student("Nadia Lino", 15, 26172);
+   static Student Eleanor = new Student("Eleanor ShellStrop", 15, 34671);
+   
+   
+   //okay
+   //so what I'm trying to do here is create an array list of Students
+   //so later on I can iterate through and retrieve the student object 
+   //and then use the student object with the method
+   
    
    public tester(){
    
@@ -38,16 +51,24 @@ public class tester extends Application{
    Chidi.addAbsences(Derrick, 9);
    Chidi.addAbsences(Nadia, 4);
    Chidi.addAbsences(Eleanor, 12);
-   Chidi.addTardies(Tahj, 3);
-   Chidi.addTardies(Derrick, 2);
-   Chidi.addTardies(Nadia, 12);
-   Chidi.addTardies(Eleanor, 23);
-  
+//   Chidi.addTardies(Tahj, 3);
+//   Chidi.addTardies(Derrick, 2);
+//   Chidi.addTardies(Nadia, 12);
+//   Chidi.addTardies(Eleanor, 23);
+   
+   
+   
    }
    
    public static void main(String[] args) {
-     
+//      List<Student> chidiClass = new ArrayList<Student>();
+//      chidiClass.add(Tahj);
+//      chidiClass.add(Derrick);
+//      chidiClass.add(Nadia);
+//      chidiClass.add(Eleanor);
       
+     
+
       launch(args);
       
       
@@ -58,6 +79,13 @@ public class tester extends Application{
    
    @Override
    public void start(Stage primaryStage) {
+      
+      Hashtable<String, Student> h = new Hashtable<String, Student>();
+      h.put("Tahj", Tahj);
+      h.put("Derrick", Derrick);
+      h.put("Nadia", Nadia);
+      h.put("Eleanor", Eleanor);
+      
           
       primaryStage.setTitle("Tester App");
       GridPane grid = new GridPane();
@@ -85,7 +113,7 @@ public class tester extends Application{
          logGrid.add(nameLabel, 0, 0);
       TextField nameText = new TextField();
          logGrid.add(nameText, 0, 2);
-                  
+               
         
       //reads the name and pin fields 
       //will match the name and pin to a teacher that is available 
@@ -95,13 +123,24 @@ public class tester extends Application{
          logGrid.add(goButton, 8, 8);
          goButton.setOnAction((action) -> {
             String storedName = nameText.getText();
-            //where the teacher object should be created 
-            //Teacher 
-            
-            //System.out.println(storedName + " " + storedPin);
+          
+            //System.out.println(storedName);
             primaryStage.setScene(teacherScene);            
          });
-         
+
+            goButton.setDisable(true);
+            nameText.textProperty().addListener(new ChangeListener<String>() {
+            
+            @Override
+            public void changed(ObservableValue<? extends String> ov, String t, String t1) {
+               if(t1.equals(""))
+                  goButton.setDisable(true);
+               else
+                  goButton.setDisable(false);
+            }
+            
+            
+         });
          
 ////////////////////////////////////////////////////////////////////////////
       
@@ -149,8 +188,26 @@ public class tester extends Application{
       absenceScene = new Scene(grid4, 300, 200);
       Label label3 = new Label("Absence Page");
          grid4.add(label3, 0, 0);
+      Label studLabel = new Label("Enter the name of the student");
+      TextField addTardyText = new TextField();
+         grid4.add(addTardyText, 0, 3);
+         
+
       Button addTardy = new Button("Add a Tardy");
          grid4.add(addTardy, 0, 2);
+            
+            addTardy.setOnAction((action) -> {
+               String tardyStudent = addTardyText.getText();
+               //how do I write this such that I can access a student 
+               
+               Student theStudent = h.get(tardyStudent);
+               
+               Chidi.addTardies(theStudent, 1);
+               
+            });
+         
+         
+         
       Button subTardy = new Button("Remove a Tardy");
          grid4.add(subTardy, 2, 2);
       Button addAbscence = new Button("Add an Absence");
@@ -196,7 +253,7 @@ public class tester extends Application{
          
       GridPane grid6 = new GridPane();   
       deanStudent = new Scene(grid6, 300, 200);
-      Label studLabel = new Label("This is where the Dean manipulates student info");
+      Label studentLabel = new Label("This is where the Dean manipulates student info");
          grid6.add(studLabel, 0, 0);
       Button studentInfo = new Button("Student Info");
          grid6.add(studentInfo, 0, 4);
