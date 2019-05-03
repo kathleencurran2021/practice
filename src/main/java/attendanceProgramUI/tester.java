@@ -219,7 +219,7 @@ public class tester extends Application{
             String notAbsentStudent = addStudentName.getText();
             Student theStudent = h.get(notAbsentStudent);
             Chidi.subtractAbsences(theStudent, 2); 
-            System.out.println("Tardy removed from " + notAbsentStudent);
+            System.out.println("Absence removed from " + notAbsentStudent);
          });      
                   
 //      Button compareToCap = new Button("Compare to Max");
