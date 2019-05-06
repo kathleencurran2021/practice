@@ -25,7 +25,6 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 
-
 @SuppressWarnings("unused")
 public class tester extends Application{
    Teacher Chidi = new Teacher("Chidi Anagonye", 36, "Philosophy", 55035.34);
@@ -41,21 +40,21 @@ public class tester extends Application{
    Student Marrissa = new Student("Marissa Hig", 17, 89132);
    Student Long = new Student("Long Kei", 16, 34211);
    Student Claire = new Student("Claire Lemon", 14 , 76459);
+   
+   Teacher theTeacher = Chidi;
   
  
    public tester(){
-   
-   Chidi.addStudent(Tahj);
-   Chidi.addStudent(Derrick);
-   Chidi.addStudent(Nadia);
-   Chidi.addStudent(Eleanor);
+      Chidi.addStudent(Tahj);
+      Chidi.addStudent(Derrick);
+      Chidi.addStudent(Nadia);
+      Chidi.addStudent(Eleanor);
 
-   Seuss.addStudent(Claire);
-   Seuss.addStudent(Shaq);
-   Seuss.addStudent(Marrissa);
-   Seuss.addStudent(Long);
-   Seuss.addStudent(Ryan);
-     
+      Seuss.addStudent(Claire);
+      Seuss.addStudent(Shaq);
+      Seuss.addStudent(Marrissa);
+      Seuss.addStudent(Long);
+      Seuss.addStudent(Ryan);
    }
    
    public static void main(String[] args) {
@@ -68,6 +67,7 @@ public class tester extends Application{
    @Override
    public void start(Stage primaryStage) {
       
+      //puts all the student objects into a hashtable 'h'
       Hashtable<String, Student> h = new Hashtable<String, Student>();
       h.put("Tahj", Tahj);
       h.put("Derrick", Derrick);
@@ -79,24 +79,27 @@ public class tester extends Application{
       h.put("Long", Long);
       h.put("Ryan", Ryan);
       
+      //puts all the teacher objects into a hashtable 'hashteacher' 
       Hashtable<String, Teacher> hashTeacher = new Hashtable<String, Teacher>();
       hashTeacher.put("Chidi", Chidi);
       hashTeacher.put("Seuss", Seuss);
-      
       
       primaryStage.setTitle("Tester App");
       
       //home page scene
       GridPane grid = new GridPane();
+      scene = new Scene(grid, 300, 200);
       Label label = new Label("Homepage");
          grid.add(label, 0, 0);
       Button btn1 = new Button("Teacher");
          grid.add(btn1, 0, 2);
       Button btn2 = new Button("Dean");
          grid.add(btn2, 6, 2);
+      //changes scene to the log in scene
       btn1.setOnAction(e -> primaryStage.setScene(loginScene));
+      //changes scene to the dean scene 
       btn2.setOnAction(e -> primaryStage.setScene(deanScene));
-      scene = new Scene(grid, 300, 200);
+      
             
 ///////////////////////////////////////////////////////////////////////
       
@@ -107,15 +110,18 @@ public class tester extends Application{
          logGrid.add(nameLabel, 0, 0);
       TextField nameText = new TextField();
          logGrid.add(nameText, 0, 2);
-               
+         
+      //retrieves the name entered in the text field and stores it in a string variable
+      //retrieves the teacher object with the string as a keyword
+      //moves to the teacher scene
       Button goButton = new Button("Go");
          logGrid.add(goButton, 8, 8);
          goButton.setOnAction((action) -> {
             String storedName = nameText.getText();
-            Teacher theTeacher = hashTeacher.get(storedName);
+            theTeacher = hashTeacher.get(storedName);
             primaryStage.setScene(teacherScene);            
          });
-
+            //disables the button until there is some input 
             goButton.setDisable(true);
             nameText.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -144,8 +150,7 @@ public class tester extends Application{
       Button printAttendance = new Button("Print Attendance");
          grid2.add(printAttendance, 2, 8);
          printAttendance.setOnAction((action) -> {
-            //Teacher theTeacher = hashTeacher.get(storedName);
-            Chidi.printAttendance();
+            theTeacher.printAttendance();
          });
          
          
@@ -163,7 +168,7 @@ public class tester extends Application{
       Button teacherInfo = new Button("Show Teacher Info");
          grid2.add(teacherInfo, 2, 14);
          teacherInfo.setOnAction((action) -> {
-            Chidi.printTeacherInfo();
+            theTeacher.printTeacherInfo();
          });
          
       //exits the GUI
@@ -181,53 +186,63 @@ public class tester extends Application{
          grid4.add(studLabel, 0, 0);
       TextField addStudentName = new TextField();
          grid4.add(addStudentName, 0, 2);
-         
+      
+         //adds a tardy to the student record
+         //if successful, prints out a message saying a tardy was added
       Button addTardy = new Button("Add a Tardy");
          grid4.add(addTardy, 0, 4);
             addTardy.setOnAction((action) -> {
                String tardyStudent = addStudentName.getText();
                Student theStudent = h.get(tardyStudent);
-               Chidi.addTardies(theStudent, 2); 
+               theTeacher.addTardies(theStudent, 2); 
                System.out.println("Tardy added to " + tardyStudent);
             });
          
-
+            //removes a tardy from the student record
+            //if successful, prints a message saying tardy was removed 
       Button subTardy = new Button("Remove a Tardy");
          grid4.add(subTardy, 2, 4);
          subTardy.setOnAction((action) -> {
                String notTardyStudent = addStudentName.getText();
                Student theStudent = h.get(notTardyStudent);
-               Chidi.subtractTardies(theStudent, 1);
+               theTeacher.subtractTardies(theStudent, 1);
                System.out.println("Tardy subtracted from " + notTardyStudent);
          });         
          
+         //adds an absence to student record 
+         //if successful, prints a message saying absence was added
       Button addAbsence = new Button("Add an Absence");
          grid4.add(addAbsence, 0, 6);
          addAbsence.setOnAction((action) -> {
             String absentStudent = addStudentName.getText();
             Student theStudent = h.get(absentStudent);
-            Chidi.addAbsences(theStudent, 2); 
+            theTeacher.addAbsences(theStudent, 2); 
             System.out.println("Absence added to " + absentStudent);
          });
          
+         //removes an absence from student record 
+         //if successful, prints a message saying absence was added
       Button subAbsence = new Button("Remove an Absence");
          grid4.add(subAbsence, 2, 6);
          subAbsence.setOnAction((action) -> {
             String notAbsentStudent = addStudentName.getText();
             Student theStudent = h.get(notAbsentStudent);
-            Chidi.subtractAbsences(theStudent, 2); 
+            theTeacher.subtractAbsences(theStudent, 2); 
             System.out.println("Absence removed from " + notAbsentStudent);
          });      
-                    
+             
+         //compares all students in a class to the max allowed amount of tardies (6)
+         //if a student is over the max, prints a message saying over the max
+         //if not, prints a message saying they are not over the max
       Button compareToCap = new Button("Compare all to Max");
          grid4.add(compareToCap, 0, 8);
          compareToCap.setOnAction((action) -> {
             String comparedStudent = addStudentName.getText();
             Student theStudent = h.get(comparedStudent);
-            Chidi.compareTOcap(Chidi.attendanceList, 6);
+            theTeacher.compareTOcap(theTeacher.attendanceList, 6);
          }); 
          
-         
+         //takes user back to teacher scene
       Button back = new Button("Back");
          grid4.add(back, 0, 10);
          back.setOnAction(e -> primaryStage.setScene(teacherScene));
@@ -241,39 +256,44 @@ public class tester extends Application{
          TextField probation = new TextField();
             grid5.add(probation, 0, 2);
             
+            // user manually adds student to probation list 
+            // if the student is over 6 tardies
          Button addProbation = new Button("Add Student to list");
             grid5.add(addProbation, 0, 4);
             addProbation.setOnAction((action) -> {
                 String studentOnProbation = probation.getText();
                    Student studProb = h.get(studentOnProbation);
-                Chidi.addStudentProbation(studProb);
+                theTeacher.addStudentProbation(studProb);
                 System.out.println(studentOnProbation + " has been added to the probation list");
             });
             
+            //manually removes student from the probation list
             Button removeProbation = new Button("Remove Student from list");
             grid5.add(removeProbation, 2, 4);
             removeProbation.setOnAction((action) -> {
                 String studentOffProbation = probation.getText();
                 Student removeStudProb = h.get(studentOffProbation);
-                Chidi.removeStudentProbation(removeStudProb);
+                theTeacher.removeStudentProbation(removeStudProb);
                 System.out.println(studentOffProbation + " has been removed from the probation list");
             });
                   
+            //prints the information of everyone on the probation list 
+            // if empty, prints a message saying it is empty 
          Button printProbation = new Button("Print Probation");
             grid5.add(printProbation, 0, 6);
             printProbation.setOnAction((action) -> {
-               Chidi.printProbation();
+               theTeacher.printProbation();
             });
      
+            //empties the probation list
+            //to be used at the end of a term 
          Button resetProbation = new Button("Reset Probation List");
             grid5.add(resetProbation, 2, 6);
             resetProbation.setOnAction((action) -> {
-               Chidi.resetList(Chidi.probationList);
+               theTeacher.resetList(theTeacher.probationList);
             });
             
-            
-            
-            
+            //takes user back to teacher scene
          Button backButton = new Button("Back");
             grid5.add(backButton, 0, 8);
             backButton.setOnAction(e -> primaryStage.setScene(teacherScene));
@@ -285,19 +305,26 @@ public class tester extends Application{
       deanScene = new Scene(grid3, 300, 200);
       Label label4 = new Label("Dean Page");
          grid3.add(label4, 0, 0);
+         
+         //takes user to student subpage
       Button studentButton = new Button("Students");
          grid3.add(studentButton, 0, 4);
          studentButton.setOnAction(e -> primaryStage.setScene(deanStudent));
+         
+         //takes user to teacher subpage
       Button teacherButton = new Button("Teachers");
          grid3.add(teacherButton, 2, 4);
          teacherButton.setOnAction(e -> primaryStage.setScene(deanTeacher));
+         
+         //takes user back to homepage 
       Button allTheWayBack = new Button("Back");
          grid3.add(allTheWayBack, 0, 8);
-         allTheWayBack.setOnAction(e -> primaryStage.setScene(loginScene));  
+         allTheWayBack.setOnAction(e -> primaryStage.setScene(scene));  
       
          
 //////////////////////////////////////////////////////////////////////////////////////////////         
          
+         //student subpage of dean scene
       GridPane grid6 = new GridPane();   
       deanStudent = new Scene(grid6, 300, 200);
       Label studentLabel = new Label("Enter the student's name");
@@ -305,24 +332,29 @@ public class tester extends Application{
       TextField studField = new TextField();
          grid6.add(studField, 0, 2);
          
-      Button studentInfo = new Button("All Student Info");
+         //prints the information of the student entered
+      Button studentInfo = new Button("Student Info");
          grid6.add(studentInfo, 0, 4);
          studentInfo.setOnAction((action) -> {
-            Chidi.printAttendance();
-            Seuss.printAttendance();
+             String studInfo = studField.getText();
+             Student theStudent = h.get(studInfo);
+             theStudent.printStudentInfo();
          });
                   
       Label move = new Label("To move a student");
          grid6.add(move, 0, 6);
-      Label move2 = new Label("Add the current and new teacher");
+      Label move2 = new Label("Add teachers to swap");
          grid6.add(move2, 0, 7);
       TextField teacher1 = new TextField();
          grid6.add(teacher1, 0, 8);
       TextField teacher2 = new TextField();
          grid6.add(teacher2, 2, 8);
+      
+         //retrieves the student object 
+         //removes it from the first teacher's class in textbox 1
+         //adds it to the class of the teacher in textbox 2
       Button moveStudent = new Button("Move Student");
          grid6.add(moveStudent, 0, 10);
-         
          moveStudent.setOnAction((action) -> {
             String getStudentName = studField.getText();
                Student s1 = h.get(getStudentName);
@@ -333,18 +365,20 @@ public class tester extends Application{
             d1.moveStudent(moveT1, moveT2, s1);   
             System.out.println("Student " + s1 + " has been moved from " + T1string + " class to " + T2string + "class");
          });
+         
+         //takes user back to dean scene
       Button letsGoBack = new Button("Back");
          grid6.add(letsGoBack, 0, 12);
-         letsGoBack.setOnAction(e -> primaryStage.setScene(teacherScene));
-      
-     
-      
+         letsGoBack.setOnAction(e -> primaryStage.setScene(deanScene));
+
       
 ///////////////////////////////////////////////////////////////////////////////////////////  
          
+            //teacher subpage of dean scene
          GridPane grid7 = new GridPane();
          deanTeacher = new Scene(grid7, 300, 200);
          
+            //prints out the information of all teachers in the school
          Button printAllTeacher = new Button("All Teacher Info");
             grid7.add(printAllTeacher, 0, 2);
             printAllTeacher.setOnAction((action) -> {
@@ -353,11 +387,12 @@ public class tester extends Application{
             });
          
          Label enterTeacher = new Label("Enter Teacher");
-            grid7.add(enterTeacher, 0, 6);
-            
+            grid7.add(enterTeacher, 0, 6);    
          TextField selectTeacher = new TextField();
             grid7.add(selectTeacher, 0, 8);
             
+            //prints the total amount of time all the students have missed 
+            //in the entered teacher's class
          Button allMissedTime = new Button("Print the total missed Time");
             grid7.add(allMissedTime, 0, 10);
             allMissedTime.setOnAction((action) -> {
@@ -371,6 +406,7 @@ public class tester extends Application{
 //            grid7.add(compareTime, 0, 12);
 //            d1.compareTeacherTotalTime();
             
+            //takes user back to dean scene
          Button goBack = new Button("Back");
             grid7.add(goBack, 0, 18);
             goBack.setOnAction(e -> primaryStage.setScene(deanScene));
@@ -378,15 +414,10 @@ public class tester extends Application{
          
 ///////////////////////////////////////////////////////////////////////////////////////////
      
-            
       //makes the window visible 
       //should be the last thing before you implement your code 
       primaryStage.setScene(scene);
       primaryStage.show();
-        
-      
-      
+  
    }
-   
-
 }
