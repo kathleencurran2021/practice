@@ -68,6 +68,7 @@ public class tester extends Application{
    public void start(Stage primaryStage) {
       
       //puts all the student objects into a hashtable 'h'
+      //all students begin with 0 tardies and 0 absences 
       Hashtable<String, Student> h = new Hashtable<String, Student>();
       h.put("Tahj", Tahj);
       h.put("Derrick", Derrick);
@@ -83,6 +84,9 @@ public class tester extends Application{
       Hashtable<String, Teacher> hashTeacher = new Hashtable<String, Teacher>();
       hashTeacher.put("Chidi", Chidi);
       hashTeacher.put("Seuss", Seuss);
+      
+      d1.tList.add(Chidi);
+      d1.tList.add(Seuss);
       
       primaryStage.setTitle("Tester App");
       
@@ -300,7 +304,7 @@ public class tester extends Application{
       
 /////////////////////////////////////////////////////////////////////////////////////////////
       
-      //dean scene 
+      //DEAN SCENE
       GridPane grid3 = new GridPane();
       deanScene = new Scene(grid3, 300, 200);
       Label label4 = new Label("Dean Page");
@@ -324,7 +328,7 @@ public class tester extends Application{
          
 //////////////////////////////////////////////////////////////////////////////////////////////         
          
-         //student subpage of dean scene
+         //STUDENT SUBSCENE OF DEAN 
       GridPane grid6 = new GridPane();   
       deanStudent = new Scene(grid6, 300, 200);
       Label studentLabel = new Label("Enter the student's name");
@@ -374,7 +378,7 @@ public class tester extends Application{
       
 ///////////////////////////////////////////////////////////////////////////////////////////  
          
-            //teacher subpage of dean scene
+            //TEACHER SUBSCENE OF DEAN
          GridPane grid7 = new GridPane();
          deanTeacher = new Scene(grid7, 300, 200);
          
@@ -402,9 +406,11 @@ public class tester extends Application{
                   aTeacher.allStudentsMissedTime();
             });
             
-//         Button compareTime = new Button("Compare Total Time");
-//            grid7.add(compareTime, 0, 12);
-//            d1.compareTeacherTotalTime();
+         Button compareTime = new Button("Compare Total Time");
+            grid7.add(compareTime, 0, 12);
+            compareTime.setOnAction((action) -> {
+               d1.compareTeacherTotalTime();
+            });
             
             //takes user back to dean scene
          Button goBack = new Button("Back");

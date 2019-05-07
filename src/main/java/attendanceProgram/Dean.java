@@ -18,7 +18,7 @@ public class Dean extends FacultyMember {
    private String name; 
    private int age;
    private String department;
-   private ArrayList<Teacher> tList;
+   public ArrayList<Teacher> tList;
    /*
     * Creates a new dean object with a name, age, and salary
     * department is always set to "Administration
@@ -122,9 +122,9 @@ public class Dean extends FacultyMember {
     * @param student
     */
    public void moveStudent(Teacher t1, Teacher t2, Student s) {
-      Student current = t1.getStudent(s);
+      //Student current = t1.getStudent(s);
       t1.removeStudent(s);
-      t2.addStudent(current);
+      t2.addStudent(s);
    }
    
    //deans list
